@@ -1,0 +1,24 @@
+{{> head}}
+    {{>navbar}}
+
+    <div class="container px-80 pt-28">
+      <div class="bg-white dark:bg-zinc-700 w-fit mx-auto p-6 my-auto rounded-xl">
+        <h1 class="text-center text-2xl font-bold mb-6 dark:text-white">Login</h1>
+        {{> alert}}
+        <form method="post" action="/login" class="w-72">
+          <div class="mb-3">
+            <label for="username" class="block mb-1 font-medium dark:text-white text-gray-900">Username</label>
+            <input type="text" name="username" class="bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-900 focus:outline-none text-gray-900 dark:text-gray-200 text-sm rounded-lg block w-full p-2.5 dark:placeholder-zinc-500" placeholder="name@gmail.com" required />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="block mb-1 font-medium dark:text-white text-gray-900">Password</label>
+            <input type="password" name="password" class="bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-900 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:placeholder-zinc-500" placeholder="password" required />
+          </div>
+          <button type="submit" class="bg-gray-800 rounded-lg dark:bg-white dark:text-black mt-5 mb-1 text-white py-2 w-full">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+{{> foot}}

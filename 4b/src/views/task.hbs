@@ -1,0 +1,76 @@
+{{> head}}
+    {{> navbar}}
+
+    <div class="container px-80 pt-14">
+      <div class="flex gap-8 w-full">
+        <a href="/">
+          <button class="bg-white rounded-xl py-2.5 px-2 content-center flex w-fit">
+            <img class="h-8" src="../assets/icon/arrow-left.svg" alt="">
+          </button>
+        </a>
+        <div class="bg-white rounded-xl pl-5 pr-3.5 flex">
+          <div class="mr-12">
+            {{#each collection}}
+            <h1 class="text-xl h-6 font-semibold pt-0.5">{{name}}</h1>
+            {{/each}}
+            <p class="text-sm pt-0.5 text-gray-500 font-medium">{{taskDone.length}}/{{totalTask}} done</p>
+          </div>
+          <div class="content-center">
+          {{#each collection}}
+            {{#if (notDone ../allTask id)}}
+            <img class="h-9" src="../assets/icon/time.svg" alt="">
+            {{else}}
+              {{#if (isZero ../allTask id)}}
+              <img class="h-9" src="../assets/icon/time.svg" alt="">
+              {{else}}
+              <img class="h-9" src="../assets/icon/check-circle.svg" alt="">
+              {{/if}}
+            {{/if}}
+          {{/each}}
+          </div>
+        </div>
+        {{#each collection}}
+        <a href="/collection-delete/{{id}}" class="ml-auto content-center">
+          <button class="bg-red-200 border-2 rounded-xl font-medium border-red-300 text-red-700 py-1.5 px-4">Delete</button>
+        </a>
+        {{/each}}
+      </div>
+
+      <div class="pt-8">
+        
+        <form method="post" action="/task/{{#each collection}}{{id}}{{/each}}">
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3">
+              <button type="submit">
+                <img class="h-8" src="../assets/icon/plus.svg" alt="">
+              </button>
+            </div>
+            <input type="text" name="name" class="block ps-14 w-full rounded-full focus:outline-none py-3">
+          </div>
+        </form>
+      </div>
+
+      <div class="pt-8">
+        <h1 class="text-xl font-medium">Tasks - {{tasks.length}}</h1>
+        {{#each tasks}}
+        <div class="py-3 mt-3 px-4 bg-white rounded-xl font-semibold text-lg flex justify-between">
+          <span>{{name}}</span>
+          <a href="/task/{{id}}/{{collections_id}}" class="h-6 w-6 border-2 rounded-lg my-auto border-gray-400"></a>
+        </div>
+        {{/each}}
+
+      <div class="pt-6">
+        <h1 class="text-xl font-medium">Completed - {{taskDone.length}}</h1>
+        {{#each taskDone}}
+        <div class="py-3 mt-3 px-4 bg-white rounded-xl font-semibold text-lg flex justify-between">
+          <span class="line-through">{{name}}</span>
+          <a href="" class="h-6 w-6 border-2 p-0.5 rounded-lg my-auto border-blue-600 bg-blue-600">
+            <img src="../assets/icon/check.svg" alt="">
+          </a>
+        </div>
+        {{/each}}
+      </div>
+
+    </div>
+
+{{> foot}}

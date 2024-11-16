@@ -211,8 +211,6 @@ async function loginPost(req, res) {
 // logout
 function logout(req, res) {
   req.session.destroy();
-
-  req.flash("success", "Logout success");
   res.redirect("/");
 }
 
